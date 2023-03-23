@@ -12,26 +12,26 @@ Please do it once using member methods and then again using non-member methods.
 Here is a list of some of the operators that you can overload for this class:
 
 "- -" unary minus. Returns the lowercase version of the object's string  
-&nbsp&nbsp&nbsp&nbsp-s1  
+    -s1  
 "== -" returns true if the two strings are equal  
-&nbsp&nbsp&nbsp&nbsp(s1 == s2)  
+    (s1 == s2)  
 "!= -" returns true if the two strings are not equal  
-&nbsp&nbsp&nbsp&nbsp(s1 != s2)  
+	(s1 != s2)  
 "< -" returns true if the lhs string is lexically less than the rhs string   
-&nbsp&nbsp&nbsp&nbsp(s1 < s2)  
+	(s1 < s2)  
 "> -" returns true if the lhs string is lexically greater than the rhs string  
-&nbsp&nbsp&nbsp&nbsp(s1 > s2)  
+	(s1 > s2)  
 "+ -" concatenation. Returns an object that concatenates the lhs and rhs  
-&nbsp&nbsp&nbsp&nbsps1 + s2  
+	s1 + s2  
 "+= -" concatenate the rhs string to the lhs string and store the result in lhs object  
-&nbsp&nbsp&nbsp&nbsps1 += s2;  equivalent to s1 = s1 + s2;  
+	s1 += s2;  equivalent to s1 = s1 + s2;  
 "* -" repeat - results in a string that is copied n times  
-&nbsp&nbsp&nbsp&nbsps2 * 3; ex). s2 = "abc";  
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsps1 = s2 * 3;  
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsps1 will result in "abcabcabc"  
+	s2 * 3; ex). s2 = "abc";  
+					s1 = s2 * 3;  
+					s1 will result in "abcabcabc"  
 "*= -" repeat the string on the lhs n times and store the result back in the lhs object  
-&nbsp&nbsp&nbsp&nbsps1 = "abc";  
-&nbsp&nbsp&nbsp&nbsps1 *= 4;   s1 will result in "abcabcabcabc"  
+	s1 = "abc";  
+	s1 *= 4;   s1 will result in "abcabcabcabc"  
 
 If you wish to overload the ++ and -- operators, remember that they have pre and post versions.
 The semantics should be as follows (this shows the member method version):
