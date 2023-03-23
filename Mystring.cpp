@@ -80,20 +80,99 @@ void Mystring::display() const
 int Mystring::get_length() const { return strlen(str); }
 const char* Mystring::get_str() const { return str; }
 
-//overloaded insertion operator
-std::ostream& operator<< (std::ostream& os, const Mystring& rhs)
-{
+// overloaded insertion operator
+std::ostream& operator<<(std::ostream& os, const Mystring& rhs) {
 	os << rhs.str;
 	return os;
 }
 
-//overloaded extraction operator
-std::istream& operator>> (std::istream& is, Mystring& rhs)
-{
+// overloaded extraction operator
+std::istream& operator>>(std::istream& in, Mystring& rhs) {
 	char* buff = new char[1000];
-	is >> buff;
-	rhs = Mystring(buff);
+	in >> buff;
+	rhs = Mystring{ buff };
 	delete[] buff;
-	return is;
+	return in;
 }
 
+Mystring Mystring::operator-() const {
+	char* buff = new char[std::strlen(str) + 1];
+	std::strcpy(buff, str);
+	for (size_t i = 0; i < std::strlen(buff); i++)
+		buff[i] = std::tolower(buff[i]);
+	Mystring temp{ buff };
+	delete[] buff;
+	return temp;
+}
+
+bool Mystring::operator== (const Mystring& rhs) const
+{
+	if (strcmp(str, rhs.str) == 0)
+		return true;
+	return false;
+}
+
+bool Mystring::operator!= (const Mystring& rhs) const
+{
+	if (strcmp(str, rhs.str) != 0)
+		return true;
+	return false;
+}
+
+bool Mystring::operator< (const Mystring& rhs) const
+{
+	if (strcmp(str, rhs.str) < 0)
+		return true;
+	return false;
+}
+
+bool Mystring::operator> (const Mystring& rhs) const
+{
+	if (strcmp(str, rhs.str) > 0)
+		return true;
+	return false;
+}
+
+Mystring Mystring::operator+ (const Mystring& rhs) const
+{
+	size_t buff_size{ std::strlen(str) + std::strlen(rhs.str) };
+	char* buff = new char[buff_size + 1];
+	std::strcpy(buff, str);
+	std::strcat(buff, rhs.str); 
+	Mystring temp{ buff };
+	delete[] buff;
+	return temp;
+}
+
+Mystring& Mystring::operator+= (const Mystring& rhs)
+{
+	size_t buff_size{ std::strlen(str) + std::strlen(rhs.str) };
+	char* buff = new char[buff_size + 1];
+	std::strcpy(buff, str); 
+	std::strcat(buff, rhs.str); 
+	delete[] str; 
+	str = buff;
+	return *this;
+}
+
+Mystring Mystring::operator* (int num) const
+{
+	size_t buff_size{ std::strlen(str) * num };
+	char* buff = new char[buff_size + 1]; 
+	for (int i = 0; i < num; i++)
+		std::strcpy(buff, str); 
+	Mystring temp{ buff }; 
+	delete[] buff; 
+	return temp; 
+}
+
+Mystring& Mystring::operator*= (int num)
+{
+	size_t buff_size{ std::strlen(str) * num }; 
+	char* buff = new char[buff_size + 1]; 
+	for (int i = 0; i < num; i++)
+		std::strcpy(buff, str); 
+	delete[] str;
+	str = buff;
+	return *this;
+}

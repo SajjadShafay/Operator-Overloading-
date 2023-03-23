@@ -1,8 +1,12 @@
 #ifndef _MYSTRING_H_
 #define _MYSTRING_H_
+#include <ostream>
+#include <istream>
 
 class Mystring
 {
+	friend std::ostream& operator<<(std::ostream& os, const Mystring& rhs);
+	friend std::istream& operator>>(std::istream& in, Mystring& rhs);
 private:
 	char* str;  // pointer to a char[] that holds a C-style string
 public:
@@ -19,7 +23,16 @@ public:
 
 	int get_length() const;
 	const char* get_str() const;
-};
 
+	Mystring operator- () const; 
+	bool operator== (const Mystring& rhs) const;
+	bool operator!= (const Mystring& rhs) const;
+	bool operator< (const Mystring& rhs) const;
+	bool operator> (const Mystring& rhs) const;
+	Mystring operator+ (const Mystring& rhs) const;
+	Mystring& operator+= (const Mystring& rhs); 
+	Mystring operator* (int num) const;
+	Mystring& operator*= (int num); 
+};
 
 #endif // _MYSTRING_H_
