@@ -159,8 +159,9 @@ Mystring Mystring::operator* (int num) const
 {
 	size_t buff_size{ std::strlen(str) * num };
 	char* buff = new char[buff_size + 1]; 
-	for (int i = 0; i < num; i++)
-		std::strcpy(buff, str); 
+	std::strcpy(buff, str); 
+	for (int i = 0; i < num - 1; i++)
+		std::strcat(buff, str); 
 	Mystring temp{ buff }; 
 	delete[] buff; 
 	return temp; 
@@ -168,10 +169,11 @@ Mystring Mystring::operator* (int num) const
 
 Mystring& Mystring::operator*= (int num)
 {
-	size_t buff_size{ std::strlen(str) * num }; 
+	size_t buff_size{ std::strlen(str) * num };
 	char* buff = new char[buff_size + 1]; 
-	for (int i = 0; i < num; i++)
-		std::strcpy(buff, str); 
+	std::strcpy(buff, str); 
+	for (int i = 0; i < num - 1; i++)
+		std::strcat(buff, str); 
 	delete[] str;
 	str = buff;
 	return *this;
