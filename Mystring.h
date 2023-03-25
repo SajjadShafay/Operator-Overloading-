@@ -7,6 +7,15 @@ class Mystring
 {
 	friend std::ostream& operator<<(std::ostream& os, const Mystring& rhs);   // friend function passes output stream by value because we are changing it and want it to stay changed. 
 	friend std::istream& operator>>(std::istream& in, Mystring& rhs); // same as above but rhs is not const because we want to change the rhs variable. 
+	friend Mystring operator-(Mystring &lhs);
+	friend bool operator== (const Mystring& lhs, const Mystring& rhs); 
+	friend bool operator!= (const Mystring& lhs, const Mystring& rhs); 
+	friend bool operator< (const Mystring& lhs, const Mystring& rhs); 
+	friend bool operator> (const Mystring& lhs, const Mystring& rhs); 
+	friend Mystring operator+ (const Mystring& lhs, const Mystring& rhs); 
+	friend Mystring& operator+= (Mystring& lhs, const Mystring& rhs); 
+	friend Mystring operator* (const Mystring& lhs, int num);
+	friend Mystring& operator*= (Mystring& lhs, int num); 
 private:
 	char* str;  // pointer to a char[] that holds a C-style string. Points to the first character of a string. If you dereference then you will only get that first character
 public:
@@ -23,16 +32,6 @@ public:
 
 	int get_length() const;
 	const char* get_str() const;
-
-	Mystring operator- () const; // this is the unary - operator. If there was something in the brackets then it would be the binary version. Returns a Mystring object. 
-	bool operator== (const Mystring& rhs) const; // is a bool because it returns true or false. Just a comparison. ends with const because we are changing nothing. 
-	bool operator!= (const Mystring& rhs) const; // same as above
-	bool operator< (const Mystring& rhs) const; // same as above
-	bool operator> (const Mystring& rhs) const; // same as above
-	Mystring operator+ (const Mystring& rhs) const; // Returns a Mystring object. Const because we will store the result in a new object and not change either of the ones used. 
-	Mystring& operator+= (const Mystring& rhs); // Self assignment. 
-	Mystring operator* (int num) const; // Returns a Mystring object. Const because we will store the result in a new object and not change either of the ones used. 
-	Mystring& operator*= (int num); // Self assignment
 };
 
 #endif // _MYSTRING_H_

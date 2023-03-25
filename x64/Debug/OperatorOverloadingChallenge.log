@@ -1,3 +1,5 @@
 ﻿  Mystring.cpp
-D:\Users\Shafay\Documents\repos\GameLibrary\OperatorOverloadingChallenge\Mystring.cpp(80,54): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  OperatorOverloadingChallenge.vcxproj -> D:\Users\Shafay\Documents\repos\GameLibrary\OperatorOverloadingChallenge\x64\Debug\OperatorOverloadingChallenge.exe
+C:\Users\Shafay\Documents\Repos\OperatorOverloading\Mystring.cpp(80,54): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
+  OperatorOverloadingChallenge.vcxproj -> C:\Users\Shafay\Documents\Repos\OperatorOverloading\x64\Debug\OperatorOverloadingChallenge.exe
